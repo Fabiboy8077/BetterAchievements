@@ -26,15 +26,13 @@ public class InventoryListener implements Listener {
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player player = (Player) event.getWhoClicked();
 
-        String title = event.getView().getTitle();
-        // Check of de titel begint met de config titel (om pagina's te ondersteunen)
-        String guiTitleBase = ChatColor.translateAlternateColorCodes('&', plugin.getGuiConfig().getString("title", "Achievements").split("%page%")[0]);
-
-        if (title.startsWith(guiTitleBase)) {
+        if (event.getInventory().getHolder() instanceof AchievementGUI) {
             event.setCancelled(true);
-            if (event.getCurrentItem() == null) return;
             
-            gui.handleClick(player, event.getSlot(), event.getCurrentItem());
+            if (event.getClickedInventory() != null && event.getClickedInventory().getHolder() instanceof AchievementGUI) {
+                if (event.getCurrentItem() == null) return;
+                gui.handleClick(player, event.getSlot(), event.getCurrentItem());
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -21,7 +22,7 @@ import java.util.UUID;
 /**
  * Handles the Achievement GUI, including rendering and click handling.
  */
-public class AchievementGUI {
+public class AchievementGUI implements InventoryHolder {
 
     private final BetterAchievements plugin;
     private static final Map<UUID, Integer> playerPage = new HashMap<>();
@@ -55,7 +56,7 @@ public class AchievementGUI {
         int size = guiConfig.getInt("size", 54);
         String title = plugin.getMessage("gui.title").replace("%page%", String.valueOf(page + 1));
         
-        Inventory inv = Bukkit.createInventory(null, size, title);
+        Inventory inv = Bukkit.createInventory(this, size, title);
         playerPage.put(player.getUniqueId(), page);
 
         // Fill background
@@ -203,5 +204,10 @@ public class AchievementGUI {
                 }
             }
         }
+    }
+
+    @Override
+    public Inventory getInventory() {
+        return null;
     }
 }
