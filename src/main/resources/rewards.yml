@@ -1,0 +1,43 @@
+# =====================================================
+# Rewards Configuration
+# =====================================================
+
+# Define all rewards here.
+# Each reward can contain:
+#   money: Amount of money (requires Vault)
+#   items: List of items in format "MATERIAL:AMOUNT"
+#   commands: List of commands to execute (without /)
+#             %player% placeholder is available.
+
+rewards:
+  # Initial join reward.
+  starter_1:
+    # Money reward given through Vault.
+    money: 5000
+    # Item rewards.
+    items:
+      - "OAK_LOG:16"
+    # Commands executed when reward is claimed.
+    commands: []
+
+  # Reward for the wood cutter achievement.
+  wood_reward:
+    money: 1000
+    items:
+      - "IRON_AXE:1"
+    commands: []
+
+  # Reward for the stone age achievement.
+  stone_reward:
+    money: 2000
+    items:
+      - "IRON_PICKAXE:1"
+    commands: []
+
+  # Reward for the mob slayer achievement.
+  combat_reward:
+    money: 5000
+    items:
+      - "IRON_SWORD:1"
+    commands:
+      - "excellentcrates key give %player% frost 1"

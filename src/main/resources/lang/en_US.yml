@@ -1,0 +1,85 @@
+# =====================================================
+# BetterAchievements Language File (English)
+# =====================================================
+
+# Prefix used in all chat messages.
+prefix: "&8[&bBetterAchievements&8] "
+
+# =====================================================
+# Achievement Messages
+# =====================================================
+
+achievement:
+  completed: "&aAchievement completed!"
+  claimed: "&aReward claimed!"
+  already_claimed: "&cYou have already claimed this achievement."
+  locked: "&cThis achievement is locked."
+  no_permission: "&cYou don't have permission."
+  reload: "&aAll configuration files have been successfully reloaded!"
+
+# =====================================================
+# GUI Labels
+# =====================================================
+
+gui:
+  title: "&3BetterAchievements - Page %page%"
+  next_page: "&bNext Page"
+  previous_page: "&bPrevious Page"
+  claim: "&aClick to claim reward"
+  completed: "&aCompleted"
+  locked: "&7Locked"
+  status: "&7Status: %status%"
+  active_lore:
+    - "&7Task: &f%task%"
+    - "&7Progress: &b%progress%&8/&b%required%"
+    - ""
+    - "&eWork on this achievement!"
+  claimable_lore:
+    - "&7Task: &f%task%"
+    - "&7Progress: &b%progress%&8/&b%required%"
+    - ""
+    - "&aClick to claim reward!"
+  claimed_lore:
+    - "&7Task: &f%task%"
+    - ""
+    - "&aYou have already claimed this!"
+  locked_name: "&c???"
+  locked_hint_prefix: " &8• &7Hint: &b"
+  locked_lore:
+    - ""
+    - " &8• &7This achievement is"
+    - "   &7not yet unlocked."
+    - ""
+    - " &8• &7Hint: &b%hint%"
+    - ""
+    - " &7Complete the previous step first."
+
+# =====================================================
+# ActionBar Messages
+# =====================================================
+
+actionbar:
+  progress: "&b%achievement% &8• &f%current%&7/&f%required% &7(%percentage%%)"
+  completed: "&aAchievement completed! Open /achievements"
+
+# =====================================================
+# Achievement Translations
+# =====================================================
+
+achievements:
+  first_join:
+    name: "&bFirst Step"
+    task: "Join the server for the first time."
+    hint: "Start"
+  wood_cutter:
+    name: "&6Wood Cutter"
+    task: "Chop 16 oak logs."
+    hint: "Mining"
+  stone_age:
+    name: "&7Stone Age"
+    task: "Chop 32 cobblestone."
+    hint: "Mining"
+  mob_slayer:
+    name: "&cMob Slayer"
+    task: "Kill 10 monsters."
+    hint: "Combat"

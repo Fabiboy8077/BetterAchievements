@@ -1,0 +1,60 @@
+# =====================================================
+# GUI Settings
+# =====================================================
+
+# The size of the GUI inventory.
+# Must be a multiple of 9 (e.g., 9, 18, 27, 36, 45, 54).
+size: 54
+
+# =====================================================
+# Filler Items
+# =====================================================
+
+# Items used to fill empty slots in the GUI.
+filler:
+  # The material type for the filler item.
+  item: "BLACK_STAINED_GLASS_PANE"
+  # The display name of the filler item.
+  name: " "
+
+# =====================================================
+# Navigation Buttons
+# =====================================================
+
+buttons:
+  # Previous page button.
+  previous:
+    slot: 45
+    item: "ARROW"
+  # Next page button.
+  next:
+    slot: 53
+    item: "ARROW"
+
+# =====================================================
+# Achievement Roadmap
+# =====================================================
+
+# The slots used for the zigzag achievement path.
+# Achievements will be placed in these slots in order.
+# Support for multiple pages is automatic.
+zigzag-slots: [10, 11, 12, 13, 14, 23, 22, 21, 20, 19, 28, 29, 30, 31, 32, 41, 40, 39, 38, 37]
+
+# =====================================================
+# Item Styles per Status
+# =====================================================
+
+# Visual style for achievements based on their status.
+styles:
+  # Style for the currently active achievement.
+  active:
+    material: "LIME_STAINED_GLASS_PANE"
+  # Style for achievements that are completed but not yet claimed.
+  claimable:
+    material: "GOLD_BLOCK"
+  # Style for achievements that have already been claimed.
+  claimed:
+    material: "MAP"
+  # Style for achievements that are still locked.
+  locked:
+    material: "GRAY_STAINED_GLASS_PANE"

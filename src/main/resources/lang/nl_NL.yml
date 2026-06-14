@@ -1,0 +1,85 @@
+# =====================================================
+# BetterAchievements Taalbestand (Nederlands)
+# =====================================================
+
+# Prefix gebruikt in alle chatberichten.
+prefix: "&8[&bBetterAchievements&8] "
+
+# =====================================================
+# Achievement Berichten
+# =====================================================
+
+achievement:
+  completed: "&aAchievement voltooid!"
+  claimed: "&aBeloning geclaimd!"
+  already_claimed: "&cJe hebt deze achievement al geclaimd."
+  locked: "&cDeze achievement is vergrendeld."
+  no_permission: "&cJe hebt hier geen toestemming voor."
+  reload: "&aAlle configuratiebestanden zijn succesvol herladen!"
+
+# =====================================================
+# GUI Labels
+# =====================================================
+
+gui:
+  title: "&3BetterAchievements - Pagina %page%"
+  next_page: "&bVolgende Pagina"
+  previous_page: "&bVorige Pagina"
+  claim: "&aKlik om te claimen"
+  completed: "&aVoltooid"
+  locked: "&7Vergrendeld"
+  status: "&7Status: %status%"
+  active_lore:
+    - "&7Taak: &f%task%"
+    - "&7Voortgang: &b%progress%&8/&b%required%"
+    - ""
+    - "&eWerk aan deze achievement!"
+  claimable_lore:
+    - "&7Taak: &f%task%"
+    - "&7Voortgang: &b%progress%&8/&b%required%"
+    - ""
+    - "&aKlik om de beloning te claimen!"
+  claimed_lore:
+    - "&7Taak: &f%task%"
+    - ""
+    - "&aJe hebt deze al geclaimd!"
+  locked_name: "&c???"
+  locked_hint_prefix: " &8• &7Hint: &b"
+  locked_lore:
+    - ""
+    - " &8• &7Deze achievement is nog"
+    - "   &7niet ontgrendeld."
+    - ""
+    - " &8• &7Hint: &b%hint%"
+    - ""
+    - " &7Voltooi eerst de vorige stap."
+
+# =====================================================
+# ActionBar Berichten
+# =====================================================
+
+actionbar:
+  progress: "&b%achievement% &8• &f%current%&7/&f%required% &7(%percentage%%)"
+  completed: "&aAchievement voltooid! Open /achievements"
+
+# =====================================================
+# Achievement Vertalingen
+# =====================================================
+
+achievements:
+  first_join:
+    name: "&bEerste Stap"
+    task: "Join de server voor het eerst."
+    hint: "Start"
+  wood_cutter:
+    name: "&6Houthakker"
+    task: "Hak 16 eikenstammen."
+    hint: "Mining"
+  stone_age:
+    name: "&7Steentijd"
+    task: "Hak 32 cobblestone."
+    hint: "Mining"
+  mob_slayer:
+    name: "&cMob Slachter"
+    task: "Dood 10 monsters."
+    hint: "Combat"

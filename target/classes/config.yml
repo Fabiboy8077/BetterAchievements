@@ -1,0 +1,43 @@
+# =====================================================
+# BetterAchievements Configuration
+# =====================================================
+
+# =====================================================
+# Language Settings
+# =====================================================
+
+# The default language of the plugin.
+# Language files are located in the /lang/ folder.
+# Available by default: en_US, nl_NL
+Language:
+  Default: en_US
+
+# =====================================================
+# General Settings
+# =====================================================
+
+settings:
+  # Enable or disable actionbar progress updates.
+  # When enabled, players will see their achievement
+  # progress in the actionbar while playing.
+  actionbar: true
+
+  # Interval in seconds to automatically save player data.
+  # This prevents data loss in case of a server crash.
+  autosave-interval: 60
+
+  # When set to true, only the currently active achievement
+  # (the next one in order) will count towards progress.
+  only-active-counts: true
+
+  # Enable debug mode to see more information in the console.
+  debug: false
+
+# =====================================================
+# Vault Integration
+# =====================================================
+
+vault:
+  # Enable or disable Vault integration for money rewards.
+  # Requires a compatible economy plugin and Vault.
+  enabled: true

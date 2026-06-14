@@ -1,0 +1,47 @@
+# =====================================================
+# Achievements Configuration
+# =====================================================
+
+# Define all 100 achievements here.
+# Translatable strings (name, task, hint) are located in the language files.
+
+achievements:
+  # Unique ID of the achievement.
+  first_join:
+    # The order in which achievements are unlocked.
+    # Lower numbers unlock first.
+    order: 1
+    # Type of task (JOIN, BLOCK_BREAK, MOB_KILL).
+    type: "JOIN"
+    # Target for the task (NONE for JOIN, MATERIAL for BLOCK_BREAK, ENTITY for MOB_KILL).
+    target: "NONE"
+    # Amount required to complete this achievement.
+    required: 1
+    # Material shown in the GUI when active/completed.
+    gui-item: "OAK_SAPLING"
+    # ID of the reward defined in rewards.yml.
+    reward-id: "starter_1"
+
+  wood_cutter:
+    order: 2
+    type: "BLOCK_BREAK"
+    target: "OAK_LOG"
+    required: 16
+    gui-item: "OAK_LOG"
+    reward-id: "wood_reward"
+
+  stone_age:
+    order: 3
+    type: "BLOCK_BREAK"
+    target: "COBBLESTONE"
+    required: 32
+    gui-item: "STONE_PICKAXE"
+    reward-id: "stone_reward"
+
+  mob_slayer:
+    order: 4
+    type: "MOB_KILL"
+    target: "MONSTER"
+    required: 10
+    gui-item: "IRON_SWORD"
+    reward-id: "combat_reward"
