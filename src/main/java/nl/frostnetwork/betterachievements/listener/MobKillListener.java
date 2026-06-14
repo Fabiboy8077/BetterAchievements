@@ -36,7 +36,9 @@ public class MobKillListener implements Listener {
 
         boolean match = false;
         String target = activeAch.getTarget();
-        if (target.equalsIgnoreCase("MONSTER")) {
+        if (target.equalsIgnoreCase("ANY")) {
+            match = true;
+        } else if (target.equalsIgnoreCase("MONSTER")) {
             if (event.getEntity() instanceof Monster) match = true;
         } else if (target.equalsIgnoreCase(event.getEntityType().name())) {
             match = true;

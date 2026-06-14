@@ -85,7 +85,7 @@ public final class BetterAchievements extends JavaPlugin {
      */
     private void saveDefaultConfigs() {
         saveDefaultConfig();
-        String[] otherConfigs = {"achievements.yml", "rewards.yml", "gui.yml"};
+        String[] otherConfigs = {"achievements.yml", "rewards.yml", "gui.yml", "example-achievements.yml"};
         for (String config : otherConfigs) {
             File file = new File(getDataFolder(), config);
             if (!file.exists()) {

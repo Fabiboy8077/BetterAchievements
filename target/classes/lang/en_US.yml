@@ -2,12 +2,7 @@
 # BetterAchievements Language File (English)
 # =====================================================
 
-# Prefix used in all chat messages.
 prefix: "&8[&bBetterAchievements&8] "
-
-# =====================================================
-# Achievement Messages
-# =====================================================
 
 achievement:
   completed: "&aAchievement completed!"
@@ -17,15 +12,12 @@ achievement:
   no_permission: "&cYou don't have permission."
   reload: "&aAll configuration files have been successfully reloaded!"
 
-# =====================================================
-# GUI Labels
-# =====================================================
-
 gui:
   title: "&3BetterAchievements - Page %page%"
   next_page: "&bNext Page"
   previous_page: "&bPrevious Page"
   claim: "&aClick to claim reward"
+  rewards_label: "&bRewards:"
   completed: "&aCompleted"
   locked: "&7Locked"
   status: "&7Status: %status%"
@@ -33,14 +25,20 @@ gui:
     - "&7Task: &f%task%"
     - "&7Progress: &b%progress%&8/&b%required%"
     - ""
+    - "%rewards%"
+    - ""
     - "&eWork on this achievement!"
   claimable_lore:
     - "&7Task: &f%task%"
     - "&7Progress: &b%progress%&8/&b%required%"
     - ""
+    - "%rewards%"
+    - ""
     - "&aClick to claim reward!"
   claimed_lore:
     - "&7Task: &f%task%"
+    - ""
+    - "%rewards%"
     - ""
     - "&aYou have already claimed this!"
   locked_name: "&c???"
@@ -54,32 +52,408 @@ gui:
     - ""
     - " &7Complete the previous step first."
 
-# =====================================================
-# ActionBar Messages
-# =====================================================
-
 actionbar:
   progress: "&b%achievement% &8• &f%current%&7/&f%required% &7(%percentage%%)"
   completed: "&aAchievement completed! Open /achievements"
 
-# =====================================================
-# Achievement Translations
-# =====================================================
-
 achievements:
   first_join:
-    name: "&bFirst Step"
+    name: "First Step"
     task: "Join the server for the first time."
-    hint: "Start"
-  wood_cutter:
-    name: "&6Wood Cutter"
+    hint: "Join"
+  wood_oak_16:
+    name: "Woodcutter I"
     task: "Chop 16 oak logs."
+    hint: "Wood"
+  wood_oak_64:
+    name: "Woodcutter II"
+    task: "Chop 64 oak logs."
+    hint: "Wood"
+  wood_birch_32:
+    name: "Birch Collector"
+    task: "Chop 32 birch logs."
+    hint: "Wood"
+  wood_spruce_32:
+    name: "Spruce Collector"
+    task: "Chop 32 spruce logs."
+    hint: "Wood"
+  wood_jungle_32:
+    name: "Jungle Collector"
+    task: "Chop 32 jungle logs."
+    hint: "Wood"
+  wood_acacia_32:
+    name: "Acacia Collector"
+    task: "Chop 32 acacia logs."
+    hint: "Wood"
+  wood_darkoak_32:
+    name: "Dark Oak Collector"
+    task: "Chop 32 dark oak logs."
+    hint: "Wood"
+  wood_oak_256:
+    name: "Woodcutter III"
+    task: "Chop 256 oak logs."
+    hint: "Wood"
+  stone_cobble_64:
+    name: "Stone Age I"
+    task: "Mine 64 cobblestone."
     hint: "Mining"
-  stone_age:
-    name: "&7Stone Age"
-    task: "Chop 32 cobblestone."
+  stone_cobble_256:
+    name: "Stone Age II"
+    task: "Mine 256 cobblestone."
     hint: "Mining"
-  mob_slayer:
-    name: "&cMob Slayer"
-    task: "Kill 10 monsters."
+  stone_cobble_1000:
+    name: "Stone Age III"
+    task: "Mine 1000 cobblestone."
+    hint: "Mining"
+  stone_stone_64:
+    name: "Smooth Operator"
+    task: "Mine 64 smooth stone."
+    hint: "Mining"
+  mining_coal_32:
+    name: "Coal Miner"
+    task: "Mine 32 coal ores."
+    hint: "Mining"
+  mining_iron_32:
+    name: "Iron Miner"
+    task: "Mine 32 iron ores."
+    hint: "Mining"
+  mining_gold_32:
+    name: "Gold Miner"
+    task: "Mine 32 gold ores."
+    hint: "Mining"
+  mining_lapis_32:
+    name: "Lapis Miner"
+    task: "Mine 32 lapis ores."
+    hint: "Mining"
+  mining_redstone_32:
+    name: "Redstone Miner"
+    task: "Mine 32 redstone ores."
+    hint: "Mining"
+  mining_diamond_5:
+    name: "Diamond Miner I"
+    task: "Mine 5 diamond ores."
+    hint: "Mining"
+  farming_seeds_16:
+    name: "Planter"
+    task: "Place 16 wheat seeds."
+    hint: "Farming"
+  farming_wheat_32:
+    name: "Harvester I"
+    task: "Harvest 32 wheat."
+    hint: "Farming"
+  farming_wheat_128:
+    name: "Harvester II"
+    task: "Harvest 128 wheat."
+    hint: "Farming"
+  farming_carrots_64:
+    name: "Carrot Farmer"
+    task: "Harvest 64 carrots."
+    hint: "Farming"
+  farming_potatoes_64:
+    name: "Potato Farmer"
+    task: "Harvest 64 potatoes."
+    hint: "Farming"
+  farming_sugar_cane_64:
+    name: "Sugar Rush"
+    task: "Harvest 64 sugar cane."
+    hint: "Farming"
+  farming_cactus_64:
+    name: "Prickly Business"
+    task: "Harvest 64 cactus."
+    hint: "Farming"
+  farming_melon_64:
+    name: "Watermelon Man"
+    task: "Harvest 64 melons."
+    hint: "Farming"
+  farming_pumpkin_64:
+    name: "Pumpkin King"
+    task: "Harvest 64 pumpkins."
+    hint: "Farming"
+  farming_master_wheat:
+    name: "Bread Winner"
+    task: "Harvest 500 wheat."
+    hint: "Farming"
+  mob_pig_10:
+    name: "Bacon Maker"
+    task: "Kill 10 pigs."
+    hint: "Mobs"
+  mob_cow_10:
+    name: "Steak House"
+    task: "Kill 10 cows."
+    hint: "Mobs"
+  mob_sheep_10:
+    name: "Wooly World"
+    task: "Kill 10 sheep."
+    hint: "Mobs"
+  mob_chicken_10:
+    name: "Feather Finder"
+    task: "Kill 10 chickens."
+    hint: "Mobs"
+  mob_rabbit_10:
+    name: "Bunny Hunter"
+    task: "Kill 10 rabbits."
+    hint: "Mobs"
+  mob_zombie_20:
+    name: "Zombie Slayer"
+    task: "Kill 20 zombies."
     hint: "Combat"
+  mob_skeleton_20:
+    name: "Bone Breaker"
+    task: "Kill 20 skeletons."
+    hint: "Combat"
+  mob_spider_20:
+    name: "Web Weaver"
+    task: "Kill 20 spiders."
+    hint: "Combat"
+  mob_creeper_10:
+    name: "Explosion Expert"
+    task: "Kill 10 creepers."
+    hint: "Combat"
+  mob_enderman_5:
+    name: "Pearl Hunter I"
+    task: "Kill 5 endermen."
+    hint: "Combat"
+  mining_iron_128:
+    name: "Iron Man"
+    task: "Mine 128 iron ores."
+    hint: "Mining"
+  mining_gold_128:
+    name: "Gold Digger"
+    task: "Mine 128 gold ores."
+    hint: "Mining"
+  mining_diamond_32:
+    name: "Diamond Miner II"
+    task: "Mine 32 diamond ores."
+    hint: "Mining"
+  mining_emerald_10:
+    name: "Villager Friend"
+    task: "Mine 10 emerald ores."
+    hint: "Mining"
+  mining_obsidian_10:
+    name: "Dark Matter"
+    task: "Mine 10 obsidian."
+    hint: "Mining"
+  nether_rack_128:
+    name: "Nether Travel"
+    task: "Mine 128 netherrack."
+    hint: "Nether"
+  nether_quartz_64:
+    name: "Quartz Collector"
+    task: "Mine 64 quartz ores."
+    hint: "Nether"
+  nether_glowstone_64:
+    name: "Let there be Light"
+    task: "Mine 64 glowstone."
+    hint: "Nether"
+  nether_soulsand_64:
+    name: "Soul Collector"
+    task: "Mine 64 soul sand."
+    hint: "Nether"
+  nether_magma_32:
+    name: "Hot Foot"
+    task: "Mine 32 magma blocks."
+    hint: "Nether"
+  mob_blaze_20:
+    name: "Blaze Burner"
+    task: "Kill 20 blazes."
+    hint: "Nether"
+  mob_ghast_5:
+    name: "Ghost Buster"
+    task: "Kill 5 ghasts."
+    hint: "Nether"
+  mob_wither_skeleton_10:
+    name: "Skull Hunter I"
+    task: "Kill 10 wither skeletons."
+    hint: "Nether"
+  mob_piglin_20:
+    name: "Gold Trade"
+    task: "Kill 20 piglins."
+    hint: "Nether"
+  mob_hoglin_10:
+    name: "Hog Hunter"
+    task: "Kill 10 hoglins."
+    hint: "Nether"
+  farming_nether_wart_64:
+    name: "Brewing Basics"
+    task: "Harvest 64 nether wart."
+    hint: "Nether"
+  building_stone_bricks_100:
+    name: "Fortress Builder"
+    task: "Place 100 stone bricks."
+    hint: "Building"
+  building_glass_100:
+    name: "Transparent"
+    task: "Place 100 glass blocks."
+    hint: "Building"
+  building_planks_500:
+    name: "Lumberjack"
+    task: "Place 500 oak planks."
+    hint: "Building"
+  building_cobble_1000:
+    name: "Cobble King"
+    task: "Place 1000 cobblestone."
+    hint: "Building"
+  mining_iron_500:
+    name: "Iron Master"
+    task: "Mine 500 iron ores."
+    hint: "Mining"
+  mining_gold_500:
+    name: "Gold Master"
+    task: "Mine 500 gold ores."
+    hint: "Mining"
+  mining_diamond_64:
+    name: "Diamond Miner III"
+    task: "Mine 64 diamond ores."
+    hint: "Mining"
+  mining_ancient_debris_5:
+    name: "Ancient Hunter I"
+    task: "Mine 5 ancient debris."
+    hint: "Nether"
+  mob_slime_20:
+    name: "Sticky Situation"
+    task: "Kill 20 slimes."
+    hint: "Combat"
+  mob_magma_cube_20:
+    name: "Hot Slime"
+    task: "Kill 20 magma cubes."
+    hint: "Nether"
+  mob_witch_10:
+    name: "Wicked"
+    task: "Kill 10 witches."
+    hint: "Combat"
+  mob_drowned_20:
+    name: "Ocean Breath"
+    task: "Kill 20 drowned."
+    hint: "Combat"
+  mob_husk_20:
+    name: "Desert Spirit"
+    task: "Kill 20 husks."
+    hint: "Combat"
+  mob_stray_20:
+    name: "Cold Heart"
+    task: "Kill 20 strays."
+    hint: "Combat"
+  farming_wheat_500:
+    name: "Cereal Killer"
+    task: "Harvest 500 wheat."
+    hint: "Farming"
+  farming_carrots_500:
+    name: "Night Vision"
+    task: "Harvest 500 carrots."
+    hint: "Farming"
+  farming_potatoes_500:
+    name: "Spud Master"
+    task: "Harvest 500 potatoes."
+    hint: "Farming"
+  farming_sugar_cane_500:
+    name: "Paper Factory"
+    task: "Harvest 500 sugar cane."
+    hint: "Farming"
+  farming_cactus_500:
+    name: "Green Thumb"
+    task: "Harvest 500 cactus."
+    hint: "Farming"
+  farming_melon_500:
+    name: "Refreshment"
+    task: "Harvest 500 melons."
+    hint: "Farming"
+  farming_pumpkin_500:
+    name: "Halloween"
+    task: "Harvest 500 pumpkins."
+    hint: "Farming"
+  farming_cocoa_64:
+    name: "Chocolate"
+    task: "Harvest 64 cocoa beans."
+    hint: "Farming"
+  farming_bamboo_128:
+    name: "Panda Friend"
+    task: "Harvest 128 bamboo."
+    hint: "Farming"
+  farming_sweet_berries_64:
+    name: "Berry Picker"
+    task: "Harvest 64 sweet berries."
+    hint: "Farming"
+  mob_guardian_20:
+    name: "Sea Monster"
+    task: "Kill 20 guardians."
+    hint: "Combat"
+  mob_phantom_10:
+    name: "Sleep Deprived"
+    task: "Kill 10 phantoms."
+    hint: "Combat"
+  mob_ravager_3:
+    name: "Beast Slayer"
+    task: "Kill 3 ravagers."
+    hint: "Combat"
+  mob_pillager_20:
+    name: "Raid Defender"
+    task: "Kill 20 pillagers."
+    hint: "Combat"
+  mob_evoker_5:
+    name: "Magic User"
+    task: "Kill 5 evokers."
+    hint: "Combat"
+  mining_ancient_debris_20:
+    name: "Ancient Hunter II"
+    task: "Mine 20 ancient debris."
+    hint: "Nether"
+  mining_diamond_128:
+    name: "Diamond Miner IV"
+    task: "Mine 128 diamond ores."
+    hint: "Mining"
+  building_netherite_block_1:
+    name: "The Flex"
+    task: "Place 1 netherite block."
+    hint: "Building"
+  nether_crying_obsidian_10:
+    name: "Crying Out Loud"
+    task: "Mine 10 crying obsidian."
+    hint: "Nether"
+  nether_basalt_128:
+    name: "Basalt King"
+    task: "Mine 128 basalt."
+    hint: "Nether"
+  mob_iron_golem_10:
+    name: "Iron Giant"
+    task: "Kill 10 iron golems."
+    hint: "Combat"
+  mob_enderman_50:
+    name: "Pearl Hunter II"
+    task: "Kill 50 endermen."
+    hint: "Combat"
+  mob_wither_skeleton_50:
+    name: "Skull Hunter II"
+    task: "Kill 50 wither skeletons."
+    hint: "Nether"
+  mob_zombified_piglin_100:
+    name: "Gold Rush"
+    task: "Kill 100 zombified piglins."
+    hint: "Combat"
+  mob_slayer_master:
+    name: "Slayer Master"
+    task: "Kill 1000 entities."
+    hint: "Combat"
+  builder_master:
+    name: "Architect"
+    task: "Place 5000 blocks."
+    hint: "Building"
+  miner_master:
+    name: "The Deep"
+    task: "Mine 10000 blocks."
+    hint: "Mining"
+  rich_player:
+    name: "Filthy Rich"
+    task: "Place 64 diamond blocks."
+    hint: "Building"
+  end_stone_128:
+    name: "The End?"
+    task: "Mine 128 end stone."
+    hint: "End"
+  mob_ender_dragon:
+    name: "Dragon Slayer"
+    task: "Kill the Ender Dragon."
+    hint: "End"
+  skyblock_god:
+    name: "Skyblock God"
+    task: "Reach the end of the journey."
+    hint: "God"

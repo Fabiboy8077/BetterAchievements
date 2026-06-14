@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,47 @@ public class RewardManager {
 
     public Reward getReward(String id) {
         return rewards.get(id);
+    }
+
+    /**
+     * Returns a formatted list of strings describing the reward.
+     *
+     * @param rewardId The ID of the reward.
+     * @return A list of strings.
+     */
+    public List<String> getRewardDescription(String rewardId) {
+        List<String> description = new ArrayList<>();
+        Reward reward = rewards.get(rewardId);
+        if (reward == null) return description;
+
+        if (reward.getMoney() > 0) {
+            description.add("&8• &6$" + String.format("%.0f", reward.getMoney()));
+        }
+
+        for (String itemStr : reward.getItems()) {
+            String[] parts = itemStr.split(":");
+            String materialName = parts[0];
+            int amount = 1;
+            if (parts.length > 1) {
+                try {
+                    amount = Integer.parseInt(parts[1]);
+                } catch (NumberFormatException ignored) {}
+            }
+            description.add("&8• &f" + amount + "x " + formatMaterialName(materialName));
+        }
+
+        return description;
+    }
+
+    private String formatMaterialName(String materialName) {
+        String[] parts = materialName.toLowerCase().split("_");
+        StringBuilder sb = new StringBuilder();
+        for (String part : parts) {
+            if (part.length() > 0) {
+                sb.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1)).append(" ");
+            }
+        }
+        return sb.toString().trim();
     }
 
     /**

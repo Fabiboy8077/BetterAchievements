@@ -128,9 +128,14 @@ public class AchievementGUI implements InventoryHolder {
             }
             List<String> styleLore = plugin.getMessageList("gui." + status + "_lore");
             for (String line : styleLore) {
-                lore.add(line.replace("%task%", ach.getTask())
-                             .replace("%progress%", String.valueOf(data.getProgress(ach.getId())))
-                             .replace("%required%", String.valueOf(ach.getRequired())));
+                if (line.contains("%rewards%")) {
+                    lore.add(plugin.getMessage("gui.rewards_label"));
+                    lore.addAll(plugin.getRewardManager().getRewardDescription(ach.getRewardId()));
+                } else {
+                    lore.add(line.replace("%task%", ach.getTask())
+                                 .replace("%progress%", String.valueOf(data.getProgress(ach.getId())))
+                                 .replace("%required%", String.valueOf(ach.getRequired())));
+                }
             }
         }
 

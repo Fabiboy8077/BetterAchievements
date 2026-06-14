@@ -2,42 +2,150 @@
 # Rewards Configuration
 # =====================================================
 
-# Define all rewards here.
-# Each reward can contain:
-#   money: Amount of money (requires Vault)
-#   items: List of items in format "MATERIAL:AMOUNT"
-#   commands: List of commands to execute (without /)
-#             %player% placeholder is available.
-
 rewards:
-  # Initial join reward.
+  # Initial join reward
   starter_1:
-    # Money reward given through Vault.
-    money: 5000
-    # Item rewards.
+    money: 1000
     items:
-      - "OAK_LOG:16"
-    # Commands executed when reward is claimed.
+      - "OAK_SAPLING:4"
+      - "DIRT:16"
     commands: []
 
-  # Reward for the wood cutter achievement.
-  wood_reward:
-    money: 1000
+  # Wood rewards
+  wood_low:
+    money: 100
+    items: []
+    commands: []
+  wood_medium:
+    money: 500
     items:
       - "IRON_AXE:1"
     commands: []
-
-  # Reward for the stone age achievement.
-  stone_reward:
+  wood_high:
     money: 2000
+    items:
+      - "GOLDEN_APPLE:1"
+    commands: []
+
+  # Stone rewards
+  stone_low:
+    money: 200
+    items: []
+    commands: []
+  stone_medium:
+    money: 1000
     items:
       - "IRON_PICKAXE:1"
     commands: []
-
-  # Reward for the mob slayer achievement.
-  combat_reward:
+  stone_high:
     money: 5000
     items:
+      - "DIAMOND:1"
+    commands: []
+
+  # Mining rewards
+  mining_low:
+    money: 250
+    items: []
+    commands: []
+  mining_medium:
+    money: 1500
+    items:
+      - "IRON_INGOT:8"
+    commands: []
+  mining_high:
+    money: 5000
+    items:
+      - "DIAMOND:3"
+    commands: []
+  mining_epic:
+    money: 10000
+    items:
+      - "DIAMOND_BLOCK:1"
+    commands: []
+  mining_godly:
+    money: 50000
+    items:
+      - "NETHERITE_INGOT:1"
+    commands: []
+
+  # Farming rewards
+  farming_low:
+    money: 150
+    items: []
+    commands: []
+  farming_medium:
+    money: 1000
+    items:
+      - "BONE_MEAL:16"
+    commands: []
+  farming_high:
+    money: 4000
+    items:
+      - "ENCHANTED_GOLDEN_APPLE:1"
+    commands: []
+
+  # Mob rewards
+  mob_low:
+    money: 200
+    items: []
+    commands: []
+  mob_medium:
+    money: 1200
+    items:
+      - "EXPERIENCE_BOTTLE:8"
+    commands: []
+  mob_high:
+    money: 4500
+    items:
       - "IRON_SWORD:1"
+    commands: []
+  mob_epic:
+    money: 15000
+    items:
+      - "DIAMOND_SWORD:1"
+    commands: []
+  mob_godly:
+    money: 75000
+    items:
+      - "NETHERITE_SWORD:1"
+    commands: []
+
+  # Nether rewards
+  nether_low:
+    money: 500
+    items: []
+    commands: []
+  nether_medium:
+    money: 2500
+    items:
+      - "QUARTZ:32"
+    commands: []
+  nether_high:
+    money: 8000
+    items:
+      - "OBSIDIAN:16"
+    commands: []
+
+  # Build rewards
+  build_medium:
+    money: 1000
+    items: []
+    commands: []
+  build_high:
+    money: 5000
+    items: []
+    commands: []
+  build_godly:
+    money: 100000
+    items:
+      - "BEACON:1"
+    commands: []
+
+  # Endgame special
+  god_reward:
+    money: 1000000
+    items:
+      - "NETHERITE_BLOCK:1"
     commands:
-      - "excellentcrates key give %player% frost 1"
+      - "broadcast &6&l%player% &eheeft alle achievements voltooid en is nu een &b&lSkyblock God!"

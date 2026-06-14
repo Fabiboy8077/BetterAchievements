@@ -1,47 +1,810 @@
 # =====================================================
 # Achievements Configuration
 # =====================================================
-
-# Define all 100 achievements here.
-# Translatable strings (name, task, hint) are located in the language files.
+# This file contains the default 100 achievements for Skyblock.
+# Each achievement follows a progression line from beginner to endgame.
 
 achievements:
-  # Unique ID of the achievement.
+  # --- BEGINNER STAGE ---
   first_join:
-    # The order in which achievements are unlocked.
-    # Lower numbers unlock first.
     order: 1
-    # Type of task (JOIN, BLOCK_BREAK, MOB_KILL).
     type: "JOIN"
-    # Target for the task (NONE for JOIN, MATERIAL for BLOCK_BREAK, ENTITY for MOB_KILL).
     target: "NONE"
-    # Amount required to complete this achievement.
     required: 1
-    # Material shown in the GUI when active/completed.
     gui-item: "OAK_SAPLING"
-    # ID of the reward defined in rewards.yml.
     reward-id: "starter_1"
 
-  wood_cutter:
+  wood_oak_16:
     order: 2
     type: "BLOCK_BREAK"
     target: "OAK_LOG"
     required: 16
     gui-item: "OAK_LOG"
-    reward-id: "wood_reward"
+    reward-id: "wood_low"
 
-  stone_age:
+  wood_oak_64:
     order: 3
     type: "BLOCK_BREAK"
-    target: "COBBLESTONE"
-    required: 32
-    gui-item: "STONE_PICKAXE"
-    reward-id: "stone_reward"
+    target: "OAK_LOG"
+    required: 64
+    gui-item: "OAK_WOOD"
+    reward-id: "wood_medium"
 
-  mob_slayer:
+  wood_birch_32:
     order: 4
+    type: "BLOCK_BREAK"
+    target: "BIRCH_LOG"
+    required: 32
+    gui-item: "BIRCH_LOG"
+    reward-id: "wood_low"
+
+  wood_spruce_32:
+    order: 5
+    type: "BLOCK_BREAK"
+    target: "SPRUCE_LOG"
+    required: 32
+    gui-item: "SPRUCE_LOG"
+    reward-id: "wood_low"
+
+  wood_jungle_32:
+    order: 6
+    type: "BLOCK_BREAK"
+    target: "JUNGLE_LOG"
+    required: 32
+    gui-item: "JUNGLE_LOG"
+    reward-id: "wood_low"
+
+  wood_acacia_32:
+    order: 7
+    type: "BLOCK_BREAK"
+    target: "ACACIA_LOG"
+    required: 32
+    gui-item: "ACACIA_LOG"
+    reward-id: "wood_low"
+
+  wood_darkoak_32:
+    order: 8
+    type: "BLOCK_BREAK"
+    target: "DARK_OAK_LOG"
+    required: 32
+    gui-item: "DARK_OAK_LOG"
+    reward-id: "wood_low"
+
+  wood_oak_256:
+    order: 9
+    type: "BLOCK_BREAK"
+    target: "OAK_LOG"
+    required: 256
+    gui-item: "OAK_LEAVES"
+    reward-id: "wood_high"
+
+  stone_cobble_64:
+    order: 10
+    type: "BLOCK_BREAK"
+    target: "COBBLESTONE"
+    required: 64
+    gui-item: "COBBLESTONE"
+    reward-id: "stone_low"
+
+  stone_cobble_256:
+    order: 11
+    type: "BLOCK_BREAK"
+    target: "COBBLESTONE"
+    required: 256
+    gui-item: "STONE"
+    reward-id: "stone_medium"
+
+  stone_cobble_1000:
+    order: 12
+    type: "BLOCK_BREAK"
+    target: "COBBLESTONE"
+    required: 1000
+    gui-item: "FURNACE"
+    reward-id: "stone_high"
+
+  stone_stone_64:
+    order: 13
+    type: "BLOCK_BREAK"
+    target: "STONE"
+    required: 64
+    gui-item: "SMOOTH_STONE"
+    reward-id: "stone_low"
+
+  mining_coal_32:
+    order: 14
+    type: "BLOCK_BREAK"
+    target: "COAL_ORE"
+    required: 32
+    gui-item: "COAL"
+    reward-id: "mining_low"
+
+  mining_iron_32:
+    order: 15
+    type: "BLOCK_BREAK"
+    target: "IRON_ORE"
+    required: 32
+    gui-item: "IRON_INGOT"
+    reward-id: "mining_medium"
+
+  mining_gold_32:
+    order: 16
+    type: "BLOCK_BREAK"
+    target: "GOLD_ORE"
+    required: 32
+    gui-item: "GOLD_INGOT"
+    reward-id: "mining_medium"
+
+  mining_lapis_32:
+    order: 17
+    type: "BLOCK_BREAK"
+    target: "LAPIS_ORE"
+    required: 32
+    gui-item: "LAPIS_LAZULI"
+    reward-id: "mining_medium"
+
+  mining_redstone_32:
+    order: 18
+    type: "BLOCK_BREAK"
+    target: "REDSTONE_ORE"
+    required: 32
+    gui-item: "REDSTONE"
+    reward-id: "mining_medium"
+
+  mining_diamond_5:
+    order: 19
+    type: "BLOCK_BREAK"
+    target: "DIAMOND_ORE"
+    required: 5
+    gui-item: "DIAMOND"
+    reward-id: "mining_high"
+
+  farming_seeds_16:
+    order: 20
+    type: "BLOCK_PLACE"
+    target: "WHEAT_SEEDS"
+    required: 16
+    gui-item: "WHEAT_SEEDS"
+    reward-id: "farming_low"
+
+  # --- MIDGAME STAGE ---
+  farming_wheat_32:
+    order: 21
+    type: "BLOCK_BREAK"
+    target: "WHEAT"
+    required: 32
+    gui-item: "WHEAT"
+    reward-id: "farming_low"
+
+  farming_wheat_128:
+    order: 22
+    type: "BLOCK_BREAK"
+    target: "WHEAT"
+    required: 128
+    gui-item: "HAY_BLOCK"
+    reward-id: "farming_medium"
+
+  farming_carrots_64:
+    order: 23
+    type: "BLOCK_BREAK"
+    target: "CARROTS"
+    required: 64
+    gui-item: "CARROT"
+    reward-id: "farming_low"
+
+  farming_potatoes_64:
+    order: 24
+    type: "BLOCK_BREAK"
+    target: "POTATOES"
+    required: 64
+    gui-item: "POTATO"
+    reward-id: "farming_low"
+
+  farming_sugar_cane_64:
+    order: 25
+    type: "BLOCK_BREAK"
+    target: "SUGAR_CANE"
+    required: 64
+    gui-item: "SUGAR_CANE"
+    reward-id: "farming_low"
+
+  farming_cactus_64:
+    order: 26
+    type: "BLOCK_BREAK"
+    target: "CACTUS"
+    required: 64
+    gui-item: "CACTUS"
+    reward-id: "farming_low"
+
+  farming_melon_64:
+    order: 27
+    type: "BLOCK_BREAK"
+    target: "MELON"
+    required: 64
+    gui-item: "MELON_SLICE"
+    reward-id: "farming_low"
+
+  farming_pumpkin_64:
+    order: 28
+    type: "BLOCK_BREAK"
+    target: "PUMPKIN"
+    required: 64
+    gui-item: "PUMPKIN"
+    reward-id: "farming_low"
+
+  farming_master_wheat:
+    order: 29
+    type: "BLOCK_BREAK"
+    target: "WHEAT"
+    required: 500
+    gui-item: "BREAD"
+    reward-id: "farming_high"
+
+  mob_pig_10:
+    order: 30
     type: "MOB_KILL"
-    target: "MONSTER"
+    target: "PIG"
     required: 10
-    gui-item: "IRON_SWORD"
-    reward-id: "combat_reward"
+    gui-item: "PORKCHOP"
+    reward-id: "mob_low"
+
+  mob_cow_10:
+    order: 31
+    type: "MOB_KILL"
+    target: "COW"
+    required: 10
+    gui-item: "BEEF"
+    reward-id: "mob_low"
+
+  mob_sheep_10:
+    order: 32
+    type: "MOB_KILL"
+    target: "SHEEP"
+    required: 10
+    gui-item: "WHITE_WOOL"
+    reward-id: "mob_low"
+
+  mob_chicken_10:
+    order: 33
+    type: "MOB_KILL"
+    target: "CHICKEN"
+    required: 10
+    gui-item: "FEATHER"
+    reward-id: "mob_low"
+
+  mob_rabbit_10:
+    order: 34
+    type: "MOB_KILL"
+    target: "RABBIT"
+    required: 10
+    gui-item: "RABBIT_FOOT"
+    reward-id: "mob_low"
+
+  mob_zombie_20:
+    order: 35
+    type: "MOB_KILL"
+    target: "ZOMBIE"
+    required: 20
+    gui-item: "ROTTEN_FLESH"
+    reward-id: "mob_medium"
+
+  mob_skeleton_20:
+    order: 36
+    type: "MOB_KILL"
+    target: "SKELETON"
+    required: 20
+    gui-item: "BONE"
+    reward-id: "mob_medium"
+
+  mob_spider_20:
+    order: 37
+    type: "MOB_KILL"
+    target: "SPIDER"
+    required: 20
+    gui-item: "SPIDER_EYE"
+    reward-id: "mob_medium"
+
+  mob_creeper_10:
+    order: 38
+    type: "MOB_KILL"
+    target: "CREEPER"
+    required: 10
+    gui-item: "GUNPOWDER"
+    reward-id: "mob_medium"
+
+  mob_enderman_5:
+    order: 39
+    type: "MOB_KILL"
+    target: "ENDERMAN"
+    required: 5
+    gui-item: "ENDER_PEARL"
+    reward-id: "mob_high"
+
+  mining_iron_128:
+    order: 40
+    type: "BLOCK_BREAK"
+    target: "IRON_ORE"
+    required: 128
+    gui-item: "IRON_BLOCK"
+    reward-id: "mining_high"
+
+  mining_gold_128:
+    order: 41
+    type: "BLOCK_BREAK"
+    target: "GOLD_ORE"
+    required: 128
+    gui-item: "GOLD_BLOCK"
+    reward-id: "mining_high"
+
+  mining_diamond_32:
+    order: 42
+    type: "BLOCK_BREAK"
+    target: "DIAMOND_ORE"
+    required: 32
+    gui-item: "DIAMOND_BLOCK"
+    reward-id: "mining_epic"
+
+  mining_emerald_10:
+    order: 43
+    type: "BLOCK_BREAK"
+    target: "EMERALD_ORE"
+    required: 10
+    gui-item: "EMERALD"
+    reward-id: "mining_medium"
+
+  mining_obsidian_10:
+    order: 44
+    type: "BLOCK_BREAK"
+    target: "OBSIDIAN"
+    required: 10
+    gui-item: "OBSIDIAN"
+    reward-id: "mining_high"
+
+  nether_rack_128:
+    order: 45
+    type: "BLOCK_BREAK"
+    target: "NETHERRACK"
+    required: 128
+    gui-item: "NETHERRACK"
+    reward-id: "nether_low"
+
+  nether_quartz_64:
+    order: 46
+    type: "BLOCK_BREAK"
+    target: "NETHER_QUARTZ_ORE"
+    required: 64
+    gui-item: "QUARTZ"
+    reward-id: "nether_medium"
+
+  nether_glowstone_64:
+    order: 47
+    type: "BLOCK_BREAK"
+    target: "GLOWSTONE"
+    required: 64
+    gui-item: "GLOWSTONE"
+    reward-id: "nether_medium"
+
+  nether_soulsand_64:
+    order: 48
+    type: "BLOCK_BREAK"
+    target: "SOUL_SAND"
+    required: 64
+    gui-item: "SOUL_SAND"
+    reward-id: "nether_medium"
+
+  nether_magma_32:
+    order: 49
+    type: "BLOCK_BREAK"
+    target: "MAGMA_BLOCK"
+    required: 32
+    gui-item: "MAGMA_BLOCK"
+    reward-id: "nether_low"
+
+  mob_blaze_20:
+    order: 50
+    type: "MOB_KILL"
+    target: "BLAZE"
+    required: 20
+    gui-item: "BLAZE_ROD"
+    reward-id: "mob_high"
+
+  mob_ghast_5:
+    order: 51
+    type: "MOB_KILL"
+    target: "GHAST"
+    required: 5
+    gui-item: "GHAST_TEAR"
+    reward-id: "mob_high"
+
+  mob_wither_skeleton_10:
+    order: 52
+    type: "MOB_KILL"
+    target: "WITHER_SKELETON"
+    required: 10
+    gui-item: "WITHER_SKELETON_SKULL"
+    reward-id: "mob_epic"
+
+  mob_piglin_20:
+    order: 53
+    type: "MOB_KILL"
+    target: "PIGLIN"
+    required: 20
+    gui-item: "GOLD_NUGGET"
+    reward-id: "mob_medium"
+
+  mob_hoglin_10:
+    order: 54
+    type: "MOB_KILL"
+    target: "HOGLIN"
+    required: 10
+    gui-item: "LEATHER"
+    reward-id: "mob_medium"
+
+  farming_nether_wart_64:
+    order: 55
+    type: "BLOCK_BREAK"
+    target: "NETHER_WART"
+    required: 64
+    gui-item: "NETHER_WART"
+    reward-id: "farming_medium"
+
+  building_stone_bricks_100:
+    order: 56
+    type: "BLOCK_PLACE"
+    target: "STONE_BRICKS"
+    required: 100
+    gui-item: "STONE_BRICKS"
+    reward-id: "build_medium"
+
+  building_glass_100:
+    order: 57
+    type: "BLOCK_PLACE"
+    target: "GLASS"
+    required: 100
+    gui-item: "GLASS"
+    reward-id: "build_medium"
+
+  building_planks_500:
+    order: 58
+    type: "BLOCK_PLACE"
+    target: "OAK_PLANKS"
+    required: 500
+    gui-item: "OAK_PLANKS"
+    reward-id: "build_high"
+
+  building_cobble_1000:
+    order: 59
+    type: "BLOCK_PLACE"
+    target: "COBBLESTONE"
+    required: 1000
+    gui-item: "COBBLESTONE"
+    reward-id: "build_high"
+
+  mining_iron_500:
+    order: 60
+    type: "BLOCK_BREAK"
+    target: "IRON_ORE"
+    required: 500
+    gui-item: "IRON_BLOCK"
+    reward-id: "mining_epic"
+
+  # --- ADVANCED STAGE ---
+  mining_gold_500:
+    order: 61
+    type: "BLOCK_BREAK"
+    target: "GOLD_ORE"
+    required: 500
+    gui-item: "GOLD_BLOCK"
+    reward-id: "mining_epic"
+
+  mining_diamond_64:
+    order: 62
+    type: "BLOCK_BREAK"
+    target: "DIAMOND_ORE"
+    required: 64
+    gui-item: "DIAMOND"
+    reward-id: "mining_epic"
+
+  mining_ancient_debris_5:
+    order: 63
+    type: "BLOCK_BREAK"
+    target: "ANCIENT_DEBRIS"
+    required: 5
+    gui-item: "ANCIENT_DEBRIS"
+    reward-id: "mining_godly"
+
+  mob_slime_20:
+    order: 64
+    type: "MOB_KILL"
+    target: "SLIME"
+    required: 20
+    gui-item: "SLIME_BALL"
+    reward-id: "mob_medium"
+
+  mob_magma_cube_20:
+    order: 65
+    type: "MOB_KILL"
+    target: "MAGMA_CUBE"
+    required: 20
+    gui-item: "MAGMA_CREAM"
+    reward-id: "mob_medium"
+
+  mob_witch_10:
+    order: 66
+    type: "MOB_KILL"
+    target: "WITCH"
+    required: 10
+    gui-item: "GLASS_BOTTLE"
+    reward-id: "mob_medium"
+
+  mob_drowned_20:
+    order: 67
+    type: "MOB_KILL"
+    target: "DROWNED"
+    required: 20
+    gui-item: "TRIDENT"
+    reward-id: "mob_medium"
+
+  mob_husk_20:
+    order: 68
+    type: "MOB_KILL"
+    target: "HUSK"
+    required: 20
+    gui-item: "SAND"
+    reward-id: "mob_medium"
+
+  mob_stray_20:
+    order: 69
+    type: "MOB_KILL"
+    target: "STRAY"
+    required: 20
+    gui-item: "ARROW"
+    reward-id: "mob_medium"
+
+  farming_wheat_500:
+    order: 70
+    type: "BLOCK_BREAK"
+    target: "WHEAT"
+    required: 500
+    gui-item: "WHEAT"
+    reward-id: "farming_high"
+
+  farming_carrots_500:
+    order: 71
+    type: "BLOCK_BREAK"
+    target: "CARROTS"
+    required: 500
+    gui-item: "GOLDEN_CARROT"
+    reward-id: "farming_high"
+
+  farming_potatoes_500:
+    order: 72
+    type: "BLOCK_BREAK"
+    target: "POTATOES"
+    required: 500
+    gui-item: "BAKED_POTATO"
+    reward-id: "farming_high"
+
+  farming_sugar_cane_500:
+    order: 73
+    type: "BLOCK_BREAK"
+    target: "SUGAR_CANE"
+    required: 500
+    gui-item: "PAPER"
+    reward-id: "farming_high"
+
+  farming_cactus_500:
+    order: 74
+    type: "BLOCK_BREAK"
+    target: "CACTUS"
+    required: 500
+    gui-item: "GREEN_DYE"
+    reward-id: "farming_high"
+
+  farming_melon_500:
+    order: 75
+    type: "BLOCK_BREAK"
+    target: "MELON"
+    required: 500
+    gui-item: "GLISTERING_MELON_SLICE"
+    reward-id: "farming_high"
+
+  farming_pumpkin_500:
+    order: 76
+    type: "BLOCK_BREAK"
+    target: "PUMPKIN"
+    required: 500
+    gui-item: "JACK_O_LANTERN"
+    reward-id: "farming_high"
+
+  farming_cocoa_64:
+    order: 77
+    type: "BLOCK_BREAK"
+    target: "COCOA"
+    required: 64
+    gui-item: "COCOA_BEANS"
+    reward-id: "farming_medium"
+
+  farming_bamboo_128:
+    order: 78
+    type: "BLOCK_BREAK"
+    target: "BAMBOO"
+    required: 128
+    gui-item: "BAMBOO"
+    reward-id: "farming_medium"
+
+  farming_sweet_berries_64:
+    order: 79
+    type: "BLOCK_BREAK"
+    target: "SWEET_BERRIES"
+    required: 64
+    gui-item: "SWEET_BERRIES"
+    reward-id: "farming_medium"
+
+  mob_guardian_20:
+    order: 80
+    type: "MOB_KILL"
+    target: "GUARDIAN"
+    required: 20
+    gui-item: "PRISMARINE_SHARD"
+    reward-id: "mob_high"
+
+  # --- ENDGAME STAGE ---
+  mob_phantom_10:
+    order: 81
+    type: "MOB_KILL"
+    target: "PHANTOM"
+    required: 10
+    gui-item: "PHANTOM_MEMBRANE"
+    reward-id: "mob_high"
+
+  mob_ravager_3:
+    order: 82
+    type: "MOB_KILL"
+    target: "RAVAGER"
+    required: 3
+    gui-item: "SADDLE"
+    reward-id: "mob_epic"
+
+  mob_pillager_20:
+    order: 83
+    type: "MOB_KILL"
+    target: "PILLAGER"
+    required: 20
+    gui-item: "CROSSBOW"
+    reward-id: "mob_high"
+
+  mob_evoker_5:
+    order: 84
+    type: "MOB_KILL"
+    target: "EVOKER"
+    required: 5
+    gui-item: "TOTEM_OF_UNDYING"
+    reward-id: "mob_epic"
+
+  mining_ancient_debris_20:
+    order: 85
+    type: "BLOCK_BREAK"
+    target: "ANCIENT_DEBRIS"
+    required: 20
+    gui-item: "NETHERITE_SCRAP"
+    reward-id: "mining_godly"
+
+  mining_diamond_128:
+    order: 86
+    type: "BLOCK_BREAK"
+    target: "DIAMOND_ORE"
+    required: 128
+    gui-item: "DIAMOND"
+    reward-id: "mining_godly"
+
+  building_netherite_block_1:
+    order: 87
+    type: "BLOCK_PLACE"
+    target: "NETHERITE_BLOCK"
+    required: 1
+    gui-item: "NETHERITE_BLOCK"
+    reward-id: "build_godly"
+
+  nether_crying_obsidian_10:
+    order: 88
+    type: "BLOCK_BREAK"
+    target: "CRYING_OBSIDIAN"
+    required: 10
+    gui-item: "CRYING_OBSIDIAN"
+    reward-id: "nether_high"
+
+  nether_basalt_128:
+    order: 89
+    type: "BLOCK_BREAK"
+    target: "BASALT"
+    required: 128
+    gui-item: "POLISHED_BASALT"
+    reward-id: "nether_medium"
+
+  mob_iron_golem_10:
+    order: 90
+    type: "MOB_KILL"
+    target: "IRON_GOLEM"
+    required: 10
+    gui-item: "IRON_BLOCK"
+    reward-id: "mob_high"
+
+  mob_enderman_50:
+    order: 91
+    type: "MOB_KILL"
+    target: "ENDERMAN"
+    required: 50
+    gui-item: "ENDER_EYE"
+    reward-id: "mob_epic"
+
+  mob_wither_skeleton_50:
+    order: 92
+    type: "MOB_KILL"
+    target: "WITHER_SKELETON"
+    required: 50
+    gui-item: "NETHER_STAR"
+    reward-id: "mob_godly"
+
+  mob_zombified_piglin_100:
+    order: 93
+    type: "MOB_KILL"
+    target: "ZOMBIFIED_PIGLIN"
+    required: 100
+    gui-item: "GOLD_BLOCK"
+    reward-id: "mob_high"
+
+  mob_slayer_master:
+    order: 94
+    type: "MOB_KILL"
+    target: "ANY"
+    required: 1000
+    gui-item: "NETHERITE_SWORD"
+    reward-id: "mob_godly"
+
+  builder_master:
+    order: 95
+    type: "BLOCK_PLACE"
+    target: "ANY"
+    required: 5000
+    gui-item: "BEACON"
+    reward-id: "build_godly"
+
+  miner_master:
+    order: 96
+    type: "BLOCK_BREAK"
+    target: "ANY"
+    required: 10000
+    gui-item: "NETHERITE_PICKAXE"
+    reward-id: "mining_godly"
+
+  rich_player:
+    order: 97
+    type: "BLOCK_PLACE"
+    target: "DIAMOND_BLOCK"
+    required: 64
+    gui-item: "DIAMOND_BLOCK"
+    reward-id: "build_godly"
+
+  end_stone_128:
+    order: 98
+    type: "BLOCK_BREAK"
+    target: "END_STONE"
+    required: 128
+    gui-item: "END_STONE"
+    reward-id: "nether_high"
+
+  mob_ender_dragon:
+    order: 99
+    type: "MOB_KILL"
+    target: "ENDER_DRAGON"
+    required: 1
+    gui-item: "DRAGON_EGG"
+    reward-id: "mob_godly"
+
+  skyblock_god:
+    order: 100
+    type: "JOIN"
+    target: "NONE"
+    required: 1
+    gui-item: "NETHERITE_CHESTPLATE"
+    reward-id: "god_reward"

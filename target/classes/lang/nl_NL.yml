@@ -2,12 +2,7 @@
 # BetterAchievements Taalbestand (Nederlands)
 # =====================================================
 
-# Prefix gebruikt in alle chatberichten.
 prefix: "&8[&bBetterAchievements&8] "
-
-# =====================================================
-# Achievement Berichten
-# =====================================================
 
 achievement:
   completed: "&aAchievement voltooid!"
@@ -17,15 +12,12 @@ achievement:
   no_permission: "&cJe hebt hier geen toestemming voor."
   reload: "&aAlle configuratiebestanden zijn succesvol herladen!"
 
-# =====================================================
-# GUI Labels
-# =====================================================
-
 gui:
   title: "&3BetterAchievements - Pagina %page%"
   next_page: "&bVolgende Pagina"
   previous_page: "&bVorige Pagina"
   claim: "&aKlik om te claimen"
+  rewards_label: "&bBeloningen:"
   completed: "&aVoltooid"
   locked: "&7Vergrendeld"
   status: "&7Status: %status%"
@@ -33,14 +25,20 @@ gui:
     - "&7Taak: &f%task%"
     - "&7Voortgang: &b%progress%&8/&b%required%"
     - ""
+    - "%rewards%"
+    - ""
     - "&eWerk aan deze achievement!"
   claimable_lore:
     - "&7Taak: &f%task%"
     - "&7Voortgang: &b%progress%&8/&b%required%"
     - ""
+    - "%rewards%"
+    - ""
     - "&aKlik om de beloning te claimen!"
   claimed_lore:
     - "&7Taak: &f%task%"
+    - ""
+    - "%rewards%"
     - ""
     - "&aJe hebt deze al geclaimd!"
   locked_name: "&c???"
@@ -54,32 +52,408 @@ gui:
     - ""
     - " &7Voltooi eerst de vorige stap."
 
-# =====================================================
-# ActionBar Berichten
-# =====================================================
-
 actionbar:
   progress: "&b%achievement% &8• &f%current%&7/&f%required% &7(%percentage%%)"
   completed: "&aAchievement voltooid! Open /achievements"
 
-# =====================================================
-# Achievement Vertalingen
-# =====================================================
-
 achievements:
   first_join:
-    name: "&bEerste Stap"
-    task: "Join de server voor het eerst."
-    hint: "Start"
-  wood_cutter:
-    name: "&6Houthakker"
+    name: "Eerste Stap"
+    task: "Join de server voor de eerste keer."
+    hint: "Join"
+  wood_oak_16:
+    name: "Houthakker I"
     task: "Hak 16 eikenstammen."
+    hint: "Hout"
+  wood_oak_64:
+    name: "Houthakker II"
+    task: "Hak 64 eikenstammen."
+    hint: "Hout"
+  wood_birch_32:
+    name: "Berken Verzamelaar"
+    task: "Hak 32 berkenstammen."
+    hint: "Hout"
+  wood_spruce_32:
+    name: "Sparren Verzamelaar"
+    task: "Hak 32 sparrenstammen."
+    hint: "Hout"
+  wood_jungle_32:
+    name: "Oerwoud Verzamelaar"
+    task: "Hak 32 oerwoudstammen."
+    hint: "Hout"
+  wood_acacia_32:
+    name: "Acacia Verzamelaar"
+    task: "Hak 32 acaciastammen."
+    hint: "Hout"
+  wood_darkoak_32:
+    name: "Donkere Eik Verzamelaar"
+    task: "Hak 32 donkere eikenstammen."
+    hint: "Hout"
+  wood_oak_256:
+    name: "Houthakker III"
+    task: "Hak 256 eikenstammen."
+    hint: "Hout"
+  stone_cobble_64:
+    name: "Steentijd I"
+    task: "Hak 64 cobblestone."
     hint: "Mining"
-  stone_age:
-    name: "&7Steentijd"
-    task: "Hak 32 cobblestone."
+  stone_cobble_256:
+    name: "Steentijd II"
+    task: "Hak 256 cobblestone."
     hint: "Mining"
-  mob_slayer:
-    name: "&cMob Slachter"
-    task: "Dood 10 monsters."
+  stone_cobble_1000:
+    name: "Steentijd III"
+    task: "Hak 1000 cobblestone."
+    hint: "Mining"
+  stone_stone_64:
+    name: "Gladde Werker"
+    task: "Hak 64 smooth stone."
+    hint: "Mining"
+  mining_coal_32:
+    name: "Kolenmijn"
+    task: "Hak 32 steenkool."
+    hint: "Mining"
+  mining_iron_32:
+    name: "IJzermijn"
+    task: "Hak 32 ijzererts."
+    hint: "Mining"
+  mining_gold_32:
+    name: "Goudzoeker"
+    task: "Hak 32 gouderts."
+    hint: "Mining"
+  mining_lapis_32:
+    name: "Lapismijn"
+    task: "Hak 32 lapis erts."
+    hint: "Mining"
+  mining_redstone_32:
+    name: "Redstonemijn"
+    task: "Hak 32 redstone erts."
+    hint: "Mining"
+  mining_diamond_5:
+    name: "Diamantzoeker I"
+    task: "Hak 5 diamanterts."
+    hint: "Mining"
+  farming_seeds_16:
+    name: "Planter"
+    task: "Plaats 16 zaden."
+    hint: "Landbouw"
+  farming_wheat_32:
+    name: "Oogster I"
+    task: "Oogst 32 tarwe."
+    hint: "Landbouw"
+  farming_wheat_128:
+    name: "Oogster II"
+    task: "Oogst 128 tarwe."
+    hint: "Landbouw"
+  farming_carrots_64:
+    name: "Wortelboer"
+    task: "Oogst 64 wortels."
+    hint: "Landbouw"
+  farming_potatoes_64:
+    name: "Aardappelboer"
+    task: "Oogst 64 aardappels."
+    hint: "Landbouw"
+  farming_sugar_cane_64:
+    name: "Suikerzoet"
+    task: "Oogst 64 suikerriet."
+    hint: "Landbouw"
+  farming_cactus_64:
+    name: "Prikkelbaar"
+    task: "Oogst 64 cactus."
+    hint: "Landbouw"
+  farming_melon_64:
+    name: "Meloenman"
+    task: "Oogst 64 meloenen."
+    hint: "Landbouw"
+  farming_pumpkin_64:
+    name: "Pompoenkoning"
+    task: "Oogst 64 pompoenen."
+    hint: "Landbouw"
+  farming_master_wheat:
+    name: "Broodwinner"
+    task: "Oogst 500 tarwe."
+    hint: "Landbouw"
+  mob_pig_10:
+    name: "Spekslager"
+    task: "Dood 10 varkens."
+    hint: "Mobs"
+  mob_cow_10:
+    name: "Biefstukhuis"
+    task: "Dood 10 koeien."
+    hint: "Mobs"
+  mob_sheep_10:
+    name: "Wollige Wereld"
+    task: "Dood 10 schapen."
+    hint: "Mobs"
+  mob_chicken_10:
+    name: "Verenverzamelaar"
+    task: "Dood 10 kippen."
+    hint: "Mobs"
+  mob_rabbit_10:
+    name: "Konijnenjager"
+    task: "Dood 10 konijnen."
+    hint: "Mobs"
+  mob_zombie_20:
+    name: "Zombie Slachter"
+    task: "Dood 20 zombies."
     hint: "Combat"
+  mob_skeleton_20:
+    name: "Bottencrasher"
+    task: "Dood 20 skeletten."
+    hint: "Combat"
+  mob_spider_20:
+    name: "Spinnenweb"
+    task: "Dood 20 spinnen."
+    hint: "Combat"
+  mob_creeper_10:
+    name: "Explosie-expert"
+    task: "Dood 10 creepers."
+    hint: "Combat"
+  mob_enderman_5:
+    name: "Parelzoeker I"
+    task: "Dood 5 endermen."
+    hint: "Combat"
+  mining_iron_128:
+    name: "Iron Man"
+    task: "Hak 128 ijzererts."
+    hint: "Mining"
+  mining_gold_128:
+    name: "Goudkoorts"
+    task: "Hak 128 gouderts."
+    hint: "Mining"
+  mining_diamond_32:
+    name: "Diamantzoeker II"
+    task: "Hak 32 diamanterts."
+    hint: "Mining"
+  mining_emerald_10:
+    name: "Vriend van het Dorp"
+    task: "Hak 10 emerald erts."
+    hint: "Mining"
+  mining_obsidian_10:
+    name: "Zwarte Materie"
+    task: "Hak 10 obsidian."
+    hint: "Mining"
+  nether_rack_128:
+    name: "Nether Reiziger"
+    task: "Hak 128 netherrack."
+    hint: "Nether"
+  nether_quartz_64:
+    name: "Quartz Verzamelaar"
+    task: "Hak 64 quartz erts."
+    hint: "Nether"
+  nether_glowstone_64:
+    name: "Licht in de Duisternis"
+    task: "Hak 64 glowstone."
+    hint: "Nether"
+  nether_soulsand_64:
+    name: "Zielenverzamelaar"
+    task: "Hak 64 soul sand."
+    hint: "Nether"
+  nether_magma_32:
+    name: "Hete Voeten"
+    task: "Hak 32 magma blokken."
+    hint: "Nether"
+  mob_blaze_20:
+    name: "Blaze Brander"
+    task: "Dood 20 blazes."
+    hint: "Nether"
+  mob_ghast_5:
+    name: "Ghost Buster"
+    task: "Dood 5 ghasts."
+    hint: "Nether"
+  mob_wither_skeleton_10:
+    name: "Schedelzoeker I"
+    task: "Dood 10 wither skeletten."
+    hint: "Nether"
+  mob_piglin_20:
+    name: "Goudhandel"
+    task: "Dood 20 piglins."
+    hint: "Nether"
+  mob_hoglin_10:
+    name: "Hog jager"
+    task: "Dood 10 hoglins."
+    hint: "Nether"
+  farming_nether_wart_64:
+    name: "Brouwerij Basics"
+    task: "Oogst 64 nether wart."
+    hint: "Nether"
+  building_stone_bricks_100:
+    name: "Vesting Bouwer"
+    task: "Plaats 100 stone bricks."
+    hint: "Bouwen"
+  building_glass_100:
+    name: "Transparant"
+    task: "Plaats 100 glas blokken."
+    hint: "Bouwen"
+  building_planks_500:
+    name: "Timmerman"
+    task: "Plaats 500 houten planken."
+    hint: "Bouwen"
+  building_cobble_1000:
+    name: "Cobble Koning"
+    task: "Plaats 1000 cobblestone."
+    hint: "Bouwen"
+  mining_iron_500:
+    name: "IJzermeester"
+    task: "Hak 500 ijzererts."
+    hint: "Mining"
+  mining_gold_500:
+    name: "Goudmeester"
+    task: "Hak 500 gouderts."
+    hint: "Mining"
+  mining_diamond_64:
+    name: "Diamantzoeker III"
+    task: "Hak 64 diamanterts."
+    hint: "Mining"
+  mining_ancient_debris_5:
+    name: "Antieke Jager I"
+    task: "Hak 5 ancient debris."
+    hint: "Nether"
+  mob_slime_20:
+    name: "Plakkerige Boel"
+    task: "Dood 20 slimes."
+    hint: "Combat"
+  mob_magma_cube_20:
+    name: "Hete Slijm"
+    task: "Dood 20 magma cubes."
+    hint: "Nether"
+  mob_witch_10:
+    name: "Hekserij"
+    task: "Dood 10 heksen."
+    hint: "Combat"
+  mob_drowned_20:
+    name: "Oceaanadem"
+    task: "Dood 20 drenkelingen."
+    hint: "Combat"
+  mob_husk_20:
+    name: "Woestijngeest"
+    task: "Dood 20 husks."
+    hint: "Combat"
+  mob_stray_20:
+    name: "Koud Hart"
+    task: "Dood 20 strays."
+    hint: "Combat"
+  farming_wheat_500:
+    name: "Seriemoordenaar"
+    task: "Oogst 500 tarwe."
+    hint: "Landbouw"
+  farming_carrots_500:
+    name: "Nachtzicht"
+    task: "Oogst 500 wortels."
+    hint: "Landbouw"
+  farming_potatoes_500:
+    name: "Aardappelmeester"
+    task: "Oogst 500 aardappels."
+    hint: "Landbouw"
+  farming_sugar_cane_500:
+    name: "Papierfabriek"
+    task: "Oogst 500 suikerriet."
+    hint: "Landbouw"
+  farming_cactus_500:
+    name: "Groene Vingers"
+    task: "Oogst 500 cactus."
+    hint: "Landbouw"
+  farming_melon_500:
+    name: "Verfrissing"
+    task: "Oogst 500 meloenen."
+    hint: "Landbouw"
+  farming_pumpkin_500:
+    name: "Halloween"
+    task: "Oogst 500 pompoenen."
+    hint: "Landbouw"
+  farming_cocoa_64:
+    name: "Chocolade"
+    task: "Oogst 64 cacaobonen."
+    hint: "Landbouw"
+  farming_bamboo_128:
+    name: "Pandavriend"
+    task: "Oogst 128 bamboe."
+    hint: "Landbouw"
+  farming_sweet_berries_64:
+    name: "Bessenplukker"
+    task: "Oogst 64 zoete bessen."
+    hint: "Landbouw"
+  mob_guardian_20:
+    name: "Zeemonster"
+    task: "Dood 20 guardians."
+    hint: "Combat"
+  mob_phantom_10:
+    name: "Slaaptekort"
+    task: "Dood 10 phantoms."
+    hint: "Combat"
+  mob_ravager_3:
+    name: "Beestdoder"
+    task: "Dood 3 ravagers."
+    hint: "Combat"
+  mob_pillager_20:
+    name: "Overval Verdediger"
+    task: "Dood 20 pillagers."
+    hint: "Combat"
+  mob_evoker_5:
+    name: "Magie Gebruiker"
+    task: "Dood 5 evokers."
+    hint: "Combat"
+  mining_ancient_debris_20:
+    name: "Antieke Jager II"
+    task: "Hak 20 ancient debris."
+    hint: "Nether"
+  mining_diamond_128:
+    name: "Diamantzoeker IV"
+    task: "Hak 128 diamanterts."
+    hint: "Mining"
+  building_netherite_block_1:
+    name: "De Flex"
+    task: "Plaats 1 netherite blok."
+    hint: "Bouwen"
+  nether_crying_obsidian_10:
+    name: "Huilend Obsidian"
+    task: "Hak 10 crying obsidian."
+    hint: "Nether"
+  nether_basalt_128:
+    name: "Basalt Koning"
+    task: "Hak 128 basalt."
+    hint: "Nether"
+  mob_iron_golem_10:
+    name: "IJzeren Reus"
+    task: "Dood 10 ijzeren golems."
+    hint: "Combat"
+  mob_enderman_50:
+    name: "Parelzoeker II"
+    task: "Dood 50 endermen."
+    hint: "Combat"
+  mob_wither_skeleton_50:
+    name: "Schedelzoeker II"
+    task: "Dood 50 wither skeletten."
+    hint: "Nether"
+  mob_zombified_piglin_100:
+    name: "Goudkoorts"
+    task: "Dood 100 zombified piglins."
+    hint: "Combat"
+  mob_slayer_master:
+    name: "Slachter Meester"
+    task: "Dood 1000 entiteiten."
+    hint: "Combat"
+  builder_master:
+    name: "Architect"
+    task: "Plaats 5000 blokken."
+    hint: "Bouwen"
+  miner_master:
+    name: "De Diepte"
+    task: "Hak 10000 blokken."
+    hint: "Mining"
+  rich_player:
+    name: "Schathemeltje Rijk"
+    task: "Plaats 64 diamantblokken."
+    hint: "Bouwen"
+  end_stone_128:
+    name: "Het Einde?"
+    task: "Hak 128 end stone."
+    hint: "End"
+  mob_ender_dragon:
+    name: "Drakendoder"
+    task: "Dood de Ender Draak."
+    hint: "End"
+  skyblock_god:
+    name: "Skyblock God"
+    task: "Bereik het einde van de reis."
+    hint: "God"

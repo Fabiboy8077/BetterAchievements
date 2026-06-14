@@ -11,6 +11,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.UUID;
 
@@ -27,6 +28,10 @@ public class BlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBreak(BlockBreakEvent event) {
+        if (event.getBlock().hasMetadata("player-placed")) {
+            return;
+        }
+        
         Player player = event.getPlayer();
         Block block = event.getBlock();
         Material material = block.getType();
@@ -36,6 +41,8 @@ public class BlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlace(BlockPlaceEvent event) {
+        event.getBlock().setMetadata("player-placed", new FixedMetadataValue(plugin, true));
+        
         Player player = event.getPlayer();
         Material material = event.getBlock().getType();
 
