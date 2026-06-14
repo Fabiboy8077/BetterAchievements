@@ -1,0 +1,75 @@
+# =====================================================
+# BetterAchievements Example Configuration
+# =====================================================
+# This file provides examples and documentation on how to create 
+# your own achievements. Do not rename this file if you want to
+# keep it as a reference. Use achievements.yml for your actual data.
+
+# -----------------------------------------------------
+# Achievement Structure Documentation
+# -----------------------------------------------------
+# id:
+#   order: (Integer) The sequence in which achievements appear. 
+#          Achievements are locked until the previous order is claimed.
+#   type: (String) The trigger type. Supported:
+#         - JOIN: Triggered when a player joins. Target should be "NONE".
+#         - BLOCK_BREAK: Triggered when breaking a block.
+#         - BLOCK_PLACE: Triggered when placing a block.
+#         - MOB_KILL: Triggered when killing an entity.
+#   target: (String) The specific material or entity type.
+#           - For BLOCK types: Use Bukkit Material names (e.g., "OAK_LOG", "COBBLESTONE").
+#           - For MOB_KILL: Use Bukkit EntityType names (e.g., "ZOMBIE", "PIG").
+#           - Use "ANY" to count any block/mob.
+#           - Use "NONE" for JOIN type.
+#   required: (Integer) Amount needed to complete the achievement.
+#   gui-item: (String) The Material name shown in the GUI (e.g., "DIAMOND_SWORD").
+#   reward-id: (String) The ID from rewards.yml to give upon claiming.
+
+achievements:
+  # Example 1: A simple join achievement
+  welcome_guest:
+    order: 1
+    type: "JOIN"
+    target: "NONE"
+    required: 1
+    gui-item: "GRASS_BLOCK"
+    reward-id: "starter_1"
+
+  # Example 2: Breaking blocks
+  wood_collector:
+    order: 2
+    type: "BLOCK_BREAK"
+    target: "OAK_LOG"
+    required: 64
+    gui-item: "OAK_LOG"
+    reward-id: "wood_reward"
+
+  # Example 3: Killing specific mobs
+  monster_hunter:
+    order: 3
+    type: "MOB_KILL"
+    target: "ZOMBIE"
+    required: 50
+    gui-item: "ROTTEN_FLESH"
+    reward-id: "combat_reward"
+
+  # Example 4: Placing blocks
+  builder_beginner:
+    order: 4
+    type: "BLOCK_PLACE"
+    target: "COBBLESTONE"
+    required: 100
+    gui-item: "COBBLESTONE"
+    reward-id: "stone_reward"
+
+# -----------------------------------------------------
+# Language Support
+# -----------------------------------------------------
+# Every achievement ID must have a corresponding entry in your 
+# language files (e.g., lang/en_US.yml) under the 'achievements' section:
+#
+# achievements:
+#   welcome_guest:
+#     name: "Welcome!"
+#     task: "Join the server."
+#     hint: "First step"
