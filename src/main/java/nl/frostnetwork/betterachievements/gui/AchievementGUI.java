@@ -163,11 +163,19 @@ public class AchievementGUI implements InventoryHolder {
         int page = playerPage.getOrDefault(player.getUniqueId(), 0);
 
         if (slot == guiConfig.getInt("buttons.previous.slot")) {
-            open(player, page - 1);
+            if (page > 0) {
+                open(player, page - 1);
+            }
             return;
         }
         if (slot == guiConfig.getInt("buttons.next.slot")) {
-            open(player, page + 1);
+            List<Achievement> allAchievements = plugin.getAchievementManager().getSortedAchievements();
+            List<Integer> slots = guiConfig.getIntegerList("zigzag-slots");
+            int achievementsPerPage = slots.size();
+
+            if (allAchievements.size() > (page + 1) * achievementsPerPage) {
+                open(player, page + 1);
+            }
             return;
         }
 
