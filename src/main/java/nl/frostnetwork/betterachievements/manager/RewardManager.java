@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -24,31 +25,24 @@ public class RewardManager {
     private final BetterAchievements plugin;
     private final Map<String, Reward> rewards = new HashMap<>();
 
-    /**
-     * Constructs the RewardManager.
-     *
-     * @param plugin The plugin instance.
-     */
     public RewardManager(BetterAchievements plugin) {
         this.plugin = plugin;
         loadRewards();
     }
 
-    /**
-     * Loads all rewards from rewards.yml.
-     */
     public void loadRewards() {
         rewards.clear();
         File file = new File(plugin.getDataFolder(), "rewards.yml");
         if (!file.exists()) {
             plugin.saveResource("rewards.yml", false);
         }
+
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
         ConfigurationSection section = config.getConfigurationSection("rewards");
         if (section == null) return;
 
         for (String key : section.getKeys(false)) {
-            double money = section.getDouble(key + ".money");
+            double money = Math.max(0D, section.getDouble(key + ".money"));
             List<String> items = section.getStringList(key + ".items");
             List<String> commands = section.getStringList(key + ".commands");
             rewards.put(key, new Reward(money, items, commands));
@@ -59,91 +53,96 @@ public class RewardManager {
         return rewards.get(id);
     }
 
-    /**
-     * Returns a formatted list of strings describing the reward.
-     *
-     * @param rewardId The ID of the reward.
-     * @return A list of strings.
-     */
     public List<String> getRewardDescription(String rewardId) {
         List<String> description = new ArrayList<>();
         Reward reward = rewards.get(rewardId);
         if (reward == null) return description;
 
         if (reward.getMoney() > 0) {
-            description.add("&8• &6$" + String.format("%.0f", reward.getMoney()));
+            description.add("&8- &6$" + String.format(Locale.US, "%.0f", reward.getMoney()));
         }
 
         for (String itemStr : reward.getItems()) {
-            String[] parts = itemStr.split(":");
-            String materialName = parts[0];
-            int amount = 1;
-            if (parts.length > 1) {
-                try {
-                    amount = Integer.parseInt(parts[1]);
-                } catch (NumberFormatException ignored) {}
-            }
-            description.add("&8• &f" + amount + "x " + formatMaterialName(materialName));
+            RewardItem rewardItem = parseRewardItem(itemStr);
+            if (rewardItem == null) continue;
+            description.add("&8- &f" + rewardItem.amount + "x " + formatMaterialName(rewardItem.material.name()));
         }
 
         return description;
     }
 
+    public void giveReward(Player player, String rewardId) {
+        Reward reward = rewards.get(rewardId);
+        if (reward == null) return;
+
+        if (reward.getMoney() > 0) {
+            if (plugin.getEconomy() != null) {
+                plugin.getEconomy().depositPlayer(player, reward.getMoney());
+            } else {
+                plugin.getLogger().warning("Could not give money reward to " + player.getName() + " because Vault/Economy is missing.");
+            }
+        }
+
+        for (String itemStr : reward.getItems()) {
+            RewardItem rewardItem = parseRewardItem(itemStr);
+            if (rewardItem == null) {
+                plugin.getLogger().warning("Invalid reward item '" + itemStr + "' in reward '" + rewardId + "'.");
+                continue;
+            }
+
+            ItemStack item = new ItemStack(rewardItem.material, rewardItem.amount);
+            Map<Integer, ItemStack> leftovers = player.getInventory().addItem(item);
+            for (ItemStack leftover : leftovers.values()) {
+                player.getWorld().dropItemNaturally(player.getLocation(), leftover);
+            }
+        }
+
+        for (String command : reward.getCommands()) {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
+        }
+    }
+
+    private RewardItem parseRewardItem(String itemStr) {
+        if (itemStr == null || itemStr.isBlank()) {
+            return null;
+        }
+
+        String[] parts = itemStr.split(":", 2);
+        Material material = Material.matchMaterial(parts[0].trim().toUpperCase(Locale.ROOT));
+        if (material == null || material.isAir()) {
+            return null;
+        }
+
+        int amount = 1;
+        if (parts.length > 1) {
+            try {
+                amount = Integer.parseInt(parts[1].trim());
+            } catch (NumberFormatException ignored) {
+                amount = 1;
+            }
+        }
+
+        return new RewardItem(material, Math.max(1, amount));
+    }
+
     private String formatMaterialName(String materialName) {
-        String[] parts = materialName.toLowerCase().split("_");
+        String[] parts = materialName.toLowerCase(Locale.ROOT).split("_");
         StringBuilder sb = new StringBuilder();
         for (String part : parts) {
-            if (part.length() > 0) {
+            if (!part.isEmpty()) {
                 sb.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1)).append(" ");
             }
         }
         return sb.toString().trim();
     }
 
-    /**
-     * Gives a reward to a player.
-     *
-     * @param player   The player to receive the reward.
-     * @param rewardId The ID of the reward to give.
-     */
-    public void giveReward(Player player, String rewardId) {
-        Reward reward = rewards.get(rewardId);
-        if (reward == null) return;
+    private static final class RewardItem {
+        private final Material material;
+        private final int amount;
 
-        // Geld beloning
-        if (reward.getMoney() > 0) {
-            if (plugin.getEconomy() != null) {
-                plugin.getEconomy().depositPlayer(player, reward.getMoney());
-            } else {
-                plugin.getLogger().warning("Kon geen geld beloning geven aan " + player.getName() + " omdat Vault/Economy ontbreekt!");
-            }
-        }
-
-        // Item beloningen
-        for (String itemStr : reward.getItems()) {
-            String[] parts = itemStr.split(":");
-            Material material = Material.matchMaterial(parts[0]);
-            int amount = 1;
-            if (parts.length > 1) {
-                try {
-                    amount = Integer.parseInt(parts[1]);
-                } catch (NumberFormatException ignored) {}
-            }
-
-            if (material != null) {
-                ItemStack item = new ItemStack(material, amount);
-                if (player.getInventory().firstEmpty() == -1) {
-                    player.getWorld().dropItemNaturally(player.getLocation(), item);
-                } else {
-                    player.getInventory().addItem(item);
-                }
-            }
-        }
-
-        // Command beloningen
-        for (String command : reward.getCommands()) {
-            String cmd = command.replace("%player%", player.getName());
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);
+        private RewardItem(Material material, int amount) {
+            this.material = material;
+            this.amount = amount;
         }
     }
 }

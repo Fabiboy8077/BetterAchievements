@@ -4,11 +4,11 @@ main: nl.frostnetwork.betterachievements.BetterAchievements
 api-version: '1.21'
 author: FrostNetwork
 description: Uitgebreid achievement systeem voor FrostSkyblock.
-depend: [Vault]
-softdepend: [PlaceholderAPI]
+softdepend: [Vault, PlaceholderAPI]
 commands:
   achievements:
-    description: Open de achievements GUI.
+    description: Open de achievements GUI of beheer achievement data.
+    usage: /achievements [reload|reset <speler>|resetall]
     aliases: [ach, betterachievements]
 permissions:
   betterachievements.admin:

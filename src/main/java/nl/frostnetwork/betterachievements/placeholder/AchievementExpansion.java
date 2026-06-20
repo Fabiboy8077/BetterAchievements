@@ -2,11 +2,8 @@ package nl.frostnetwork.betterachievements.placeholder;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import nl.frostnetwork.betterachievements.BetterAchievements;
-import nl.frostnetwork.betterachievements.model.Achievement;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
 
 /**
  * PlaceholderAPI expansion for BetterAchievements.
@@ -44,7 +41,7 @@ public class AchievementExpansion extends PlaceholderExpansion {
         if (player == null) return "";
 
         if (params.equalsIgnoreCase("completed")) {
-            return String.valueOf(plugin.getPlayerDataManager().getPlayerData(player.getUniqueId()).getClaimedAchievements().size());
+            return String.valueOf(plugin.getPlayerDataManager().getPlayerData(player.getUniqueId()).getClaimedCount());
         }
 
         if (params.equalsIgnoreCase("total")) {

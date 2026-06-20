@@ -7,18 +7,21 @@ import nl.frostnetwork.betterachievements.listener.MobKillListener;
 import nl.frostnetwork.betterachievements.listener.InventoryListener;
 import nl.frostnetwork.betterachievements.listener.PlayerListener;
 import nl.frostnetwork.betterachievements.manager.AchievementManager;
+import nl.frostnetwork.betterachievements.manager.AchievementProgressManager;
 import nl.frostnetwork.betterachievements.manager.PlayerDataManager;
 import nl.frostnetwork.betterachievements.manager.RewardManager;
 import nl.frostnetwork.betterachievements.placeholder.AchievementExpansion;
+import nl.frostnetwork.betterachievements.task.AchievementTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 /**
  * Main class for the BetterAchievements plugin.
@@ -29,11 +32,13 @@ public final class BetterAchievements extends JavaPlugin {
     private static BetterAchievements instance;
     private Economy econ = null;
     private AchievementManager achievementManager;
+    private AchievementProgressManager progressManager;
     private PlayerDataManager playerDataManager;
     private RewardManager rewardManager;
     private FileConfiguration languageConfig;
     private FileConfiguration fallbackConfig;
     private FileConfiguration guiConfig;
+    private BukkitTask achievementTask;
 
     @Override
     public void onEnable() {
@@ -51,12 +56,21 @@ public final class BetterAchievements extends JavaPlugin {
         }
 
         // Initialize Managers
+        this.playerDataManager = new PlayerDataManager(this);
         this.rewardManager = new RewardManager(this);
         this.achievementManager = new AchievementManager(this);
-        this.playerDataManager = new PlayerDataManager(this);
+        this.progressManager = new AchievementProgressManager(this);
 
         // Register Commands
-        getCommand("achievements").setExecutor(new AchievementCommand(this));
+        PluginCommand achievementsCommand = getCommand("achievements");
+        if (achievementsCommand == null) {
+            getLogger().severe("Command 'achievements' is missing from plugin.yml.");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+        AchievementCommand achievementCommand = new AchievementCommand(this);
+        achievementsCommand.setExecutor(achievementCommand);
+        achievementsCommand.setTabCompleter(achievementCommand);
 
         // Register Listeners
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);
@@ -69,13 +83,15 @@ public final class BetterAchievements extends JavaPlugin {
             new AchievementExpansion(this).register();
         }
 
+        startAchievementTask();
+
         getLogger().info("BetterAchievements has been successfully enabled!");
     }
 
     @Override
     public void onDisable() {
         if (playerDataManager != null) {
-            playerDataManager.saveAllData();
+            playerDataManager.shutdown();
         }
         getLogger().info("BetterAchievements has been disabled.");
     }
@@ -160,6 +176,10 @@ public final class BetterAchievements extends JavaPlugin {
         return achievementManager;
     }
 
+    public AchievementProgressManager getProgressManager() {
+        return progressManager;
+    }
+
     public PlayerDataManager getPlayerDataManager() {
         return playerDataManager;
     }
@@ -227,7 +247,22 @@ public final class BetterAchievements extends JavaPlugin {
     public void reloadPlugin() {
         reloadConfig();
         loadCustomConfigs();
+        playerDataManager.reloadSettings();
         rewardManager.loadRewards();
         achievementManager.loadAchievements();
+        restartAchievementTask();
+    }
+
+    private void startAchievementTask() {
+        long intervalSeconds = Math.max(1L, getConfig().getLong("settings.achievement-check-interval", 60L));
+        long intervalTicks = intervalSeconds * 20L;
+        achievementTask = Bukkit.getScheduler().runTaskTimer(this, new AchievementTask(this), intervalTicks, intervalTicks);
+    }
+
+    private void restartAchievementTask() {
+        if (achievementTask != null) {
+            achievementTask.cancel();
+        }
+        startAchievementTask();
     }
 }

@@ -19,6 +19,8 @@ Een geavanceerde achievements plugin voor FrostNetwork.
 ## Commands
 - `/achievements` - Open de achievements GUI.
 - `/achievements reload` - Herlaad alle configuratiebestanden.
+- `/betterachievements reset <speler>` - Reset de achievements van een speler.
+- `/betterachievements resetall` - Reset alle achievement data, inclusief offline spelers.
 
 ## Permissies
 - `betterachievements.admin` - Toegang tot het reload command.

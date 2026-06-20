@@ -5,12 +5,18 @@
 prefix: "&8[&bBetterAchievements&8] "
 
 achievement:
-  completed: "&aAchievement completed!"
-  claimed: "&aReward claimed!"
+  completed: "&aAchievement completed: &f%achievement%&a!"
+  claimed: "&aReward claimed: &f%achievement%&a!"
   already_claimed: "&cYou have already claimed this achievement."
   locked: "&cThis achievement is locked."
   no_permission: "&cYou don't have permission."
   reload: "&aAll configuration files have been successfully reloaded!"
+  reset_usage: "&cUsage: /betterachievements reset <player>"
+  reset_player_not_found: "&cNo stored achievement data found for &f%player%&c."
+  reset_player_success: "&aAchievements for &f%player% &ahave been reset."
+  reset_all_success: "&aAll achievement data has been reset. &7(%count% player files deleted)"
+  reset_all_partial: "&eAchievement data reset, but &f%failed% &efile(s) could not be deleted. &7(%count% deleted)"
+  reset_failed: "&cReset failed. Check the console for details."
 
 gui:
   title: "&3BetterAchievements - Page %page%"

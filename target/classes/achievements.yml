@@ -803,8 +803,8 @@ achievements:
 
   skyblock_god:
     order: 100
-    type: "JOIN"
+    type: "ACHIEVEMENTS_COMPLETED"
     target: "NONE"
-    required: 1
+    required: 99
     gui-item: "NETHERITE_CHESTPLATE"
     reward-id: "god_reward"

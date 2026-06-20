@@ -2,6 +2,7 @@ package nl.frostnetwork.betterachievements.manager;
 
 import nl.frostnetwork.betterachievements.BetterAchievements;
 import nl.frostnetwork.betterachievements.model.Achievement;
+import nl.frostnetwork.betterachievements.model.PlayerData;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -55,15 +56,21 @@ public class AchievementManager {
             String task = plugin.getMessage("achievements." + key + ".task");
             String sneakpeekHint = plugin.getMessage("achievements." + key + ".hint");
             
-            String type = section.getString(key + ".type", "UNKNOWN").toUpperCase();
-            String target = section.getString(key + ".target", "").toUpperCase();
-            int required = section.getInt(key + ".required");
+            String type = normalize(section.getString(key + ".type", "UNKNOWN"));
+            String target = normalize(section.getString(key + ".target", "NONE"));
+            int required = Math.max(1, section.getInt(key + ".required", 1));
             
             String guiItemName = section.getString(key + ".gui-item", "PAPER");
             Material guiItem = Material.matchMaterial(guiItemName);
-            if (guiItem == null) guiItem = Material.PAPER;
+            if (guiItem == null || guiItem.isAir()) {
+                plugin.getLogger().warning("Invalid gui-item '" + guiItemName + "' for achievement '" + key + "'. Using PAPER.");
+                guiItem = Material.PAPER;
+            }
             
             String rewardId = section.getString(key + ".reward-id", "");
+            if (!rewardId.isBlank() && plugin.getRewardManager().getReward(rewardId) == null) {
+                plugin.getLogger().warning("Achievement '" + key + "' references missing reward-id '" + rewardId + "'.");
+            }
 
             Achievement achievement = new Achievement(key, order, name, task, type, target, required, guiItem, sneakpeekHint, rewardId);
             
@@ -72,7 +79,11 @@ public class AchievementManager {
             achievementsByType.computeIfAbsent(type, k -> new ArrayList<>()).add(achievement);
         }
         
-        sortedAchievements.sort(Comparator.comparingInt(Achievement::getOrder));
+        Comparator<Achievement> orderComparator = Comparator
+                .comparingInt(Achievement::getOrder)
+                .thenComparing(Achievement::getId);
+        sortedAchievements.sort(orderComparator);
+        achievementsByType.values().forEach(list -> list.sort(orderComparator));
         plugin.getLogger().info("Loaded " + achievements.size() + " achievements.");
     }
 
@@ -82,7 +93,7 @@ public class AchievementManager {
      * @return A map of achievement IDs to Achievement objects.
      */
     public Map<String, Achievement> getAchievements() {
-        return achievements;
+        return Collections.unmodifiableMap(achievements);
     }
     
     /**
@@ -91,7 +102,7 @@ public class AchievementManager {
      * @return A list of sorted achievements.
      */
     public List<Achievement> getSortedAchievements() {
-        return sortedAchievements;
+        return Collections.unmodifiableList(sortedAchievements);
     }
 
     /**
@@ -111,7 +122,11 @@ public class AchievementManager {
      * @return A list of achievements with that type.
      */
     public List<Achievement> getAchievementsByType(String type) {
-        return achievementsByType.getOrDefault(type.toUpperCase(), Collections.emptyList());
+        List<Achievement> achievements = achievementsByType.get(normalize(type));
+        if (achievements == null) {
+            return Collections.emptyList();
+        }
+        return Collections.unmodifiableList(achievements);
     }
 
     /**
@@ -121,11 +136,35 @@ public class AchievementManager {
      * @return The active Achievement, or null if all are completed.
      */
     public Achievement getActiveAchievement(UUID uuid) {
+        return getActiveAchievement(plugin.getPlayerDataManager().getPlayerData(uuid));
+    }
+
+    public Achievement getActiveAchievement(PlayerData data) {
         for (Achievement a : sortedAchievements) {
-            if (!plugin.getPlayerDataManager().getPlayerData(uuid).isClaimed(a.getId())) {
+            if (!data.isClaimed(a.getId())) {
                 return a;
             }
         }
         return null;
+    }
+
+    public int getFirstUnclaimedOrder(PlayerData data) {
+        for (Achievement achievement : sortedAchievements) {
+            if (!data.isClaimed(achievement.getId())) {
+                return achievement.getOrder();
+            }
+        }
+        return Integer.MAX_VALUE;
+    }
+
+    public boolean hasUnclaimedBefore(PlayerData data, Achievement achievement) {
+        return getFirstUnclaimedOrder(data) < achievement.getOrder();
+    }
+
+    private String normalize(String value) {
+        if (value == null || value.isBlank()) {
+            return "NONE";
+        }
+        return value.trim().toUpperCase(Locale.ROOT);
     }
 }

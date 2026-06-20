@@ -5,12 +5,18 @@
 prefix: "&8[&bBetterAchievements&8] "
 
 achievement:
-  completed: "&aAchievement voltooid!"
-  claimed: "&aBeloning geclaimd!"
+  completed: "&aAchievement voltooid: &f%achievement%&a!"
+  claimed: "&aBeloning geclaimd: &f%achievement%&a!"
   already_claimed: "&cJe hebt deze achievement al geclaimd."
   locked: "&cDeze achievement is vergrendeld."
   no_permission: "&cJe hebt hier geen toestemming voor."
   reload: "&aAlle configuratiebestanden zijn succesvol herladen!"
+  reset_usage: "&cGebruik: /betterachievements reset <speler>"
+  reset_player_not_found: "&cGeen opgeslagen achievement data gevonden voor &f%player%&c."
+  reset_player_success: "&aAchievements van &f%player% &azijn gereset."
+  reset_all_success: "&aAlle achievement data is gereset. &7(%count% spelerbestanden verwijderd)"
+  reset_all_partial: "&eAchievement data gereset, maar &f%failed% &ebestand(en) konden niet worden verwijderd. &7(%count% verwijderd)"
+  reset_failed: "&cResetten is mislukt. Check de console voor details."
 
 gui:
   title: "&3BetterAchievements - Pagina %page%"

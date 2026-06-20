@@ -26,6 +26,10 @@ settings:
   # This prevents data loss in case of a server crash.
   autosave-interval: 60
 
+  # Interval in seconds for periodic achievement checks
+  # such as playtime, money and completed-achievement goals.
+  achievement-check-interval: 60
+
   # When set to true, only the currently active achievement
   # (the next one in order) will count towards progress.
   only-active-counts: true
